@@ -1,7 +1,7 @@
 module.exports = {
     development: {
-        username: "nucleo",
-        password: "nucleo123",
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
         database: "database_development",
         host: "localhost",
         port: 1433,
