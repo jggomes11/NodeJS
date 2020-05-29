@@ -1,6 +1,6 @@
 {
     "name": "NodeSequelizeDemo",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "main": "index.js",
     "repository": "https://github.com/jggomes11/Sequelize.git",
     "author": "João Gomes",
