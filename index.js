@@ -11,7 +11,7 @@ const bodyParser = require("body-parser"); // Parsers body data
 const models = require("./src/database/models");
 
 // Server
-const http = require("http").createServer(app);
+const server = require("http").createServer(app);
 
 app.use(morgan("dev")); // Morgan req info style
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -24,7 +24,7 @@ app.use(require("./src/routes"));
 models.sequelize
     .sync()
     .then(() => {
-        http.listen(process.env.PORT);
+        server.listen(process.env.PORT);
     })
     .catch((err) => {
         throw new Error(err);
