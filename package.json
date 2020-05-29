@@ -1,8 +1,8 @@
 {
-    "name": "NodeSequelizeDemo",
+    "name": "NodeJS",
     "version": "2.0.0",
     "main": "index.js",
-    "repository": "https://github.com/jggomes11/Sequelize.git",
+    "repository": "https://github.com/jggomes11/NodeJS.git",
     "author": "João Gomes",
     "license": "MIT",
     "scripts": {
