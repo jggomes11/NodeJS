@@ -1,4 +1,4 @@
-const { __fibonacciThreaded } = require("../math");
+const { Test } = require("../functions");
 const { Worker, isMainThread, parentPort, workerData } = require("worker_threads");
 
 /**
@@ -7,14 +7,21 @@ const { Worker, isMainThread, parentPort, workerData } = require("worker_threads
  *              - Instantiate a Worker
  *              - Worker's events
  */
-const newWorker = (workerData) => {
+const newWorker = (workerData, io, event) => {
+    io.emit(event, { atual: 0, total: 0 });
     return new Promise((resolve, reject) => {
         const worker = new Worker(__filename, { workerData }); // File's name to be threaded and it's params
 
         // Event triggered when use `parentPort.postMessage'
         // Communicate with frontend or send the result somewhere else
         worker.on("message", (message) => {
+            const { atual, total } = message;
+
             console.log(message); // All __fibonacciThreaded interations are printed here
+            io.emit(event, {
+                atual: atual + 1,
+                total,
+            });
         });
         // Event triggered When an error happens
         worker.on("error", reject);
@@ -34,8 +41,8 @@ const newWorker = (workerData) => {
  */
 const notMainThread = async function (workerData) {
     if (!isMainThread) {
-        const result = await __fibonacciThreaded(workerData.length);
-        parentPort.postMessage(result); // Clone result variable and send it to main thread
+        const { length } = workerData;
+        await Test.delayEventLoop(true, length);
     }
 };
 
