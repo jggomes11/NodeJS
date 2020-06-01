@@ -1,4 +1,4 @@
 module.exports = {
-    Math: require("./math"),
+    Functions: require("./functions"),
     Workers: require("./workers"),
 };
