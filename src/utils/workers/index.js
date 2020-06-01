@@ -1,3 +1,3 @@
 module.exports = {
-    fiboWorker: require("./fibonacciWorker"),
+    worker: require("./worker"),
 };
